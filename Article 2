@@ -1,0 +1,41 @@
+Decred, a technical solution to the social problem of contentious forking
+The way forking occurs in cryptocurrencies has been looked by some as a feature and by others as an issue, bitcoin as an example is an Open Source Software (OSS) and will evolve with collaboration and consensus of powers managing the direction of the software(s). It also means it will fork under contention, as seen by the history of software forks in OSS (1). In cryptocurrencies that run on blockchains, this can lead to technical issues (2), a loss of funds via blockchain instability (3), reduce network security (4), cause identity problems (Theseus problems) and a dilution of value (human and financial) (5). In this article, I want to explore what happens to pure Proof-of-Work (PoW) based cryptocurrencies when a dispute occurs through understanding the power dynamics of the forces at play. I then want to explore and compare how the Decred projects on-chain/off-chain voting provides a technical solution to the social problem of contentious forks. 
+A quick intro to the Theseus problem:
+…
+Pure PoW based governance
+I have created a created a model as an example to communicate the power dynamics of a Pure PoW cryptocurrency. The green path shows the model in equilibrium. This power dynamic has been observed across all cryptocurrencies that utilize pure PoW, most notably in bitcoin and ethereum. A few sources that would agree to this model by (6) (7) (8).
+The happy path as indicated by green is due to the forces exerted by each entity(s) reaching an equilibrium. None of these entities/forces have complete control and if anyone them is removed the value proposition the network networks break down as well. As contentious debates on the direction of the protocol erupt a new competing structure emerges.
+A dispute occurs in the direction of the protocol, via informal/formal pathways. This is usually backed by a certain prerogative which exerts influence on users. 
+2) A software update is provided for the wider user group to support,
+ 3) users whoa re convinced signal the miners through a User activated Hard fork or Soft. 
+4) hashpower split occurs and one chain ends up with majority/minority hashpower. 
+5) Exchanges are interrupted by unstable block times and possible loss of funds due to transacting on an unstable blockchain. 
+6) Users want solutions and many may lack the domain expertise to judge one decision from another, market speculation is incentivized via a token split. 
+7) exchanges who are profit-oriented are incentivized to support an old or amended implementation with replay protection. Two distinct coins are presented to the market to arbitrage on. We have seen this play out in contentious decisions most prominently in bitcoin, ethereum which resulted in bitcoin cash and etheruem classic.
+
+A few glaring issues :
+Users have the inability to resolve a dispute, the decision is handled overtime through market arbitration
+Miners have are ultimately followers like users, the decision is handled overtime through market arbitration
+Dev teams are externally funded, who may clash with the incentive of the users
+Development is not inclusive, users have no formal/robust pathway of providing feedback
+
+Decred's Onchain Governance
+…
+
+
+
+
+Conclusion
+
+
+Sources
+1: https://en.wikipedia.org/wiki/List_of_software_forks
+2
+3
+4
+5
+6 A Cross-Sectional Overview of Cryptoasset Governance and Implications for Investor,(nic carter 2017)
+7 (Jimmy Song 2017)
+8 (De Philippi and Loveluck (2016))
+9
+10
