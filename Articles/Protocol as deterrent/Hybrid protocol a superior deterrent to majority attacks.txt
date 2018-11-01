@@ -1,0 +1,53 @@
+Decred’s hybrid protocol, a superior deterrent to majority attacks
+This is a follow up to “Apples to apples, Decred is 20x more expensive to attack than Bitcoin”. Upon further discussion with Decred project organizer Jake Yocom-Piatt, the claims made in the Proof of Activity paper did not accurately apply to Decred’s unique hybrid protocol. In this article, I aim to explicitly calculate the costs of a majority attack and compare Decred to other cryptocurrencies.
+
+The Proof of Work (PoW) protocol was made ubiquitous by Bitcoin through its success in achieving the milestone of distributed and trustless consensus. Proof of Stake (PoS) is another such consensus mechanism that attempts to replace miners with stakeholders, however it is arguably deficient in a number of ways if employed by itself (method of distribution and ‘nothing at stake’ are some of the issues that plague pure PoS systems). These protocols exist to function as an economic measure to deter the misuse of the network. In this article I will be showing how Decred’s hybrid PoW/PoS protocol provides a superior deterrent to majority attacks by augmenting hashing power with stakeholder voting.
+
+Hybrid PoW/PoS, a novel hybrid protocol
+In Decred, token holders have the ability to check the blocks found by miners. Furthermore, its hybrid protocol provides stakeholders with ‘skin in the game’ the ability to vote on changes to the consensus rules. The act of participation, yet voluntary, is highly incentivized as 30% of the block reward is allocated to it. The protocol does all of this ‘on-chain’ and enforces changes automatically, making reliance on third parties (dev team or foundation) unnecessary. This layer of governance functions as a dispute resolution process, reducing the friction that would otherwise splinter the network. Since PoW mining is still the ‘gold’ standard, a balance is achieved by giving 60% of the block reward to the miners. A decentralized network fund takes the remaining 10% with the intention of making the Decred project autonomous and self-sustainable.
+
+Stakeholders can acquire voting tickets by locking up a specific amount of Decred coins (DCR). Each block that is mined includes up to 5 Tickets randomly picked by the protocol, from a pool of ~40,960. Tickets have an internal market governed by the protocol itself, the price per ticket fluctuates every 144 blocks (about 12 hours). The lowest possible number of votes it takes to approve a block is 3 votes. Tickets that are waiting for selection can be locked for up to ~142 days (about 4.7 months) and are non-refundable. This ensures that the voters face the repercussions of their actions. To learn more, the Decred documentation is a great resource.
+
+Requirements for a majority attack
+A majority attack (>50% attack) simply means that attackers are creating blocks faster than the rest of the network, which in theory allows them to edit the blockchain at their own will. To calculate the costs of a majority attack in pure PoW, we simply take the current hashpower of the network and divide it by two. If a group of attackers gets a hold of more than that, the whole network is at their mercy.
+
+A similar attack on Decred is more complicated to pull off. To explain this, let’s take the current PoS participation of the Decred network and calculate the hashpower requirements for a majority attack. At the time of this writing, the active stake participation of the network is converging at around 46.77% and the hashpower is around 40712.58795 TH/s.
+
+
+Hashrate can be calculated by taking the difficulty of the network * 2 ³² /block-time of the network. https://explorer.dcrdata.org/
+To find requirements of hashpower and stake required, Jake Yocom-Piatt (current project organizer of Decred) provided the following claim and proof along with a brief explanation.
+
+Claim 1 — An attacker with a fraction of the tickets, f_s, needs to have more than X times the hashpower of honest miners in order to gain an advantage over the network.
+Proof:
+
+Let E_1 = {3 or more votes are under the attacker’s control} and E_2 = {3 or more votes are under honest stakeholder control}. We condition the event on E_3 = {the 5 voters are online}, and note that Pr[E_1 | E_3] = (5 C 5) * f_s ^ 5 + (5 C 4) * f_s ^ 4 * (1- f_s) + (5 C 3) * f_s ^ 3 * (1- f_s) ^ 2 = 6 f_s ^ 5 -15 f_s ^ 4 + 10 f_s ^ 3 is the probability that an attacker has enough votes to mine a block, and Pr[E_2 | E_3] = 6 (1 f_s) ^ 5 -15 (1 f_s) ^ 4 + 10 f_s ^ 3 is the probability that the honest nodes have enough votes to mine a block. This means that on average the attacker will generate a block after 1 / Pr[E_1 | E_3] nonce attempts that meet the current difficulty target and have enough votes, while the honest network needs 1 / Pr[E_2 | E_3] such attempts, on average. Therefore, if the attacker is fast enough so that she could compute Pr[E_2 | E_3] / Pr[E_1 | E_3] nonce attempts per one nonce attempt of the honest network, she can generate the blocks at the same average speed as the rest of the network.
+(5 C 5) * f_s⁵ is for the 1 way that all 5 votes are present, which is 5 C 5 = 1, and the attacker’s fraction of stake to denote the probability of having all 5 votes. (5 C 4) * f_s⁴ * (1-f_s) is for the 5 ways you can have 4 votes, which is the 5 C 4 = 5, and f_s⁴ for the 4 votes the attacker has times the probability of the attacker not having it. Similarly, (5 C 3) * f_s³ * (1-f_s)² is for the ways that 3 of the 5 votes are present. If you make the swap f_s ←> (1-f_s) in the formula above, you get the similar figure for the honest fraction of stake.
+Simplifying the above, an attacker with a fraction of tickets, f_s, needs (6 (1-f_s)⁵ -15(1-f_s)⁴ + 10(1-f_s)³) / (6f_s⁵-15f_s⁴ + 10f_s³) times the hashpower of the network. If we graph the formula above based on percentage of stake an attacker can possibly hold, we can determine how much hashpower an attacker requires to create blocks faster than the honest network.
+
+
+PoW and PoS fraction that is required to keep up with the Honest chain
+If an attacker has around 50% of the stake/tickets, they would also need 1 times (100%) the honest hashpower. In order to launch a majority attack on the Decred network, attackers thus need 50% of the network hashpower and 50% of the voting tickets. Let’s use this data to calculate the cost of a majority attack on the network.
+
+Comparing the costs of a majority attack
+Using a D9 Decred master ASIC miner that goes for $4600 and hashes at 2.4 TH/s, we can calculate the cost of hashpower. D9s equate to $1916 per TH/s. To get to 50% of the current hashpower it would cost 20764 TH/s * $1916 =~ $40 million. Since we also need 50% of the tickets, let’s take the current price of the coin ($70) and the amount of DCR in voting tickets (3,761,136.25). It would additionally cost($70(0.5 * 3,761,136.25) =~ $133 million, totaling to 40 + 133 =~ $173 million to attack Decred at the time of this writing.
+
+If we take the current Bitcoin network hashpower of 40527745.18 TH/s, we would need 20669150.04 TH/s to get to 51%. Using an Antminer S9i that goes for $794 and hashes at 14 TH/s, an S9i equates to ~$56 per TH/s. Thus, it would cost approximately($56* 20669150.04 TH/s) =~ $1172 million to attack Bitcoin. Similarly, we can calculate the costs to attack Bitcoin Cash which uses the same hashing algorithm as Bitcoin. At the time of writing it would only require 2315400 TH/s to get to 51%. It would thus cost ($56 * 2315400 TH/s) =~ $131 million to attack Bitcoin Cash.
+
+By being fairly explicit in my calculations, you should now be able to calculate the costs to perform a majority attack on other cryptocurrencies using mining products sold on the markets. Here are a few I have calculated.
+
+
+An apples to apples comparison
+In the calculations above, I used mining equipment at current market prices. However, it is reasonable to assume that the attackers will be fabricating their own ASICs at a substantially lower rate than market prices.
+
+To do an apples to apples comparison versus pure PoW blockchains, we have to assume that the marketcap, hashpower and cost of mining equipment are the same for Decred as the blockchain it is being compared to.
+
+
+Having similar stats, Decred would be ~22 times costlier to attack than Bitcoin and ~9 times more expensive to attack than Ethereum.
+
+
+Similarly, Decred would be ~28, ~9 and ~8 times costlier to attack versus Bitcoin Cash, Litecoin and Ethereum Classic. As you may see, Decred’s hybrid protocol deters majority attacks by creating a costlier threshold since it requires hashpower + stake. It may be of interest to note that Ethereum, Litecoin and Ethereum Classic all use a memory intense hashing algorithm that aims to circumvent mining centralization. This aim, arguably wishful, may further gain to benefit from a hybrid protocol.
+
+Conclusion
+The hybrid protocol of Decred does not only have the benefits of PoW mining, but augments it by giving stakeholders that have ‘skin in the game’ the ability to be active participants in the protection and advancement of the network. This article demonstrated how a majority attack on Decred would be costlier in comparison to a pure PoW chain, as it requires the added cost to attain stake in addition to hashpower. If protocols are to be compared based on their ability to deter >50% attacks, then I argue that, based on calculations shown in this article, a hybrid protocol provides superior security.
+
+A special thanks to the Decred community on Slack, in addition to jy-p, davecgh, Haon and others for providing information and proofreading.
