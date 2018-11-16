@@ -1,63 +1,86 @@
-Balancing power structures: how Decred iterates upon Bitcoin
-It is in the nature of open source software to evolve with collaboration and fork under contention. The same is true for blockchains and cryptocurrencies. As blockchains face the hurdle of mass adoption, coordination and collective decision making can contribute to the success of a project. While Bitcoin's protocol is the standard for most cryptocurrencies as it relates to network consensus, it is arguably deficient as a mechanism for achieving social consensus among stakeholders. This article depicts how achieving social consensus on intra-protocol changes can lead to disruptive events on the Bitcoin (or Bitcoin Cash!) network, and examines how Decred's protocol allows these changes to occur in a more efficient and stable manner. This article will use diagrams to illustrate which entities can influence protocol evolution and shed some light on the high-level power structures that govern most blockchain based cryptocurrencies.
-Some definitions:
-Social consensus = Peers in agreement 
-Intra-protocol changes = Changes to the consensus rules 
+Blockchain governance: how Decred iterates upon Bitcoin
+It is in the nature of open source software to evolve with collaboration and fork under contention. The same is true for blockchains and cryptocurrencies. As blockchains face the hurdle of mass adoption, coordination and collective decision making can contribute to the success of a project. While Bitcoin’s protocol is the standard for most cryptocurrencies as it relates to network consensus, it is arguably deficient as a mechanism for achieving social consensus among stakeholders.
+
+This article depicts how achieving social consensus on intra-protocol changes can lead to disruptive events on the Bitcoin (or Bitcoin Cash!) network, and examines how Decred’s protocol allows these changes to occur in a more efficient and stable manner. This article will use diagrams to illustrate which entities can influence protocol evolution and shed some light on the high-level power structures that govern most blockchain based cryptocurrencies.
+
+Basic definitions:
+Social consensus = Peers in agreement
+Intra-protocol changes = Changes to the consensus rules
 Consensus failure = A change to the rule-set that results in chain splits
 Sustained chain split = When there are multiple competing versions of the same blockchain for an extended period of time
-
 Entities in the visual diagrams:
-Power structure diagrams will be introduced in this article, the structures are made up of entities that fall into three categories:
-Validation:
+Diagrams are used in this article to illustrate the power dynamics within a cryptocurrency network. The diagrams are made up of entities that fall into three categories:
 
-Mining Nodes refer to nodes that choose to secure the network because they see value in running a particular full node implementation, for example bitcoin core. As networks become competitive, miners could congregate in mining pools to get consistent payouts.
-Staking Nodes (specific to Decred) refer to nodes that choose to time-lock their coins by running a particular implementation. These nodes are able to weight in on validating blocks, vote on proposed intra-protocol changes and earn a portion of the block reward. 
+1. Validation:
 
-2.  Value:
-Economic Nodes are exchanges, merchants, and businesses where the value of the network and token is derived from. Economic nodes rely on the implementation developers, foundation or a community of open source developers for updates and patches. 
-Users refer to the population that transacts and uses the software as they find value in it. They can also provide feedback to developers and incentivize businesses to adopt the technology.
+Mining Nodes refer to nodes that choose to secure the network because they see value in running a particular software implementation, for example Bitcoin Core. As networks become competitive, miners could congregate in mining pools to get consistent payouts.
+Staking Nodes (specific to Decred) refer to nodes that choose to time-lock their coins by running a particular software implementation. These nodes are able to weight in on validating blocks, vote on proposed intra-protocol changes and earn a portion of the block reward.
+2. Value:
 
-3.  Software updates:
-Developers of implementation are usually the core group of developers who work on the most dominant implementation the network runs on, e.g bitcoin core group. They provide the network with software updates and formulate a roadmap. 
+Economic Nodes are exchanges, merchants, and businesses where the value of the network and its token is derived from. Economic nodes rely on software implementations from a corporation, foundation or a community of open source developers for updates and patches.
+Users refer to the people using the network token to transact value. They can also provide feedback to developers and incentivize businesses to adopt the cryptocurrency as a payment method.
+3. Software:
 
-Examining Bitcoin's PoW based governance
-Using the above entities, we can create a diagram that communicates the power dynamics that govern a pure PoW cryptocurrency, such as Bitcoin. The green path shows the model in equilibrium with the entities described above. None of these entities have complete control, and if anyone is removed, the value proposition of the network changes.
-Entities that have influence in Bitcoin. The above model was inspired by Nic Carters tripartite model and Jimmy songs article on UASF BIP148The issue with the above model is that there is no tamper-proof pathway for users, the only pathway is either proving feedback to the developers via forums/websites/polls or through the market itself. Therefore, the above model relies on market arbitration for resolution on decisions. We have seen instances of gridlocks and drawn out disputes as a result, all to influence the direction of the protocol. One of the biggest issue with the reliance on market forces is that it allows for the possibility of sustained chain splits due and contentious hard forks. There are a good deal of examples to portray that such potentialities can occur, a good example is the current Bitcoin cash split and the historical Bitcoin splits. Knowing this, we can extrapolate conditions, that can put the above model in a state of flux:
-Pure PoW power structure in a contentious disputeA disagreement occurs in the developer camp over a proposed intra-protocol change. Social consensus is gauged (polls, meetings, social media). A competing rule-set emerges, backed by developers with new sources of funding.
-Developers of old or new software provision an update, stating their intent to resolve problem x, some users show support to these developers through upgrading to this new rule-set/software.
-Signaling can occur to help convince miners, however this is not a requirement (see User activated soft / hard fork (UASF/UAHF). 
-A few mining pools can decide to support opposing rule-set, a hashpower split occurs.
-If this is a very contentious change, miners can cause reorganizations by causing a hashpower war.
-There is no formal pathway for formalizing intra-protocol decisions, the only option is a token split  and decision through market arbitration.
-Economic nodes are incentivized by the users to support old and/or amended implementation.
+Developers are usually grouped in teams that work on the most dominant software implementation(s) of the network. They provide other entities with software updates and formulate a roadmap.
+Examining Bitcoin’s PoW based governance
+It is possible to create a diagram of the power dynamics that govern a pure PoW cryptocurrency (such as Bitcoin) using the described entities. The diagram below shows the model of a PoW network in equilibrium. None of the entities have complete control and if anyone is removed, the value proposition of the network changes. While in equilibrium, this model works well.
 
-By looking at the above model, it can be observed that when these two key stakeholders are put out of alignment, sustained chain splits can occur:
-Users do not have a tamper-free pathway to participate in intra-protocol decision making. Social consensus and decisions are resolved via market arbitration.
-Mining nodes can cause consensus failure by supporting alternative rule-sets as they are not bound by any agreements, they can also make speculative decisions to achieve an edge over other mining operations. Example ViaBTC causing Bitcoin cash fork.
 
-Chain splits may occur 
-Chain splits can occur from a varying events such as one depicted above or even accidentally due to a consensus bug. Chain splits could cause a loss of transaction finality, the defining feature of cryptocurrencies. Usually, the more the number of confirmations, the more confidence one can have in the permanence of the transaction.
-Depiction of a blockchain reorganizing, all transactions mined in Fork B blocks will reverseHowever, during such events, no amount of confirmations are safe and in these circumstances a branch has to win and cause a reorganization. Reliance on hashpower to reach social consensus entails risks of disputes which can lead to drawn-out wars, and massive reorganization(s). Thus during such events, it is not safe for transactions to occur as there are increased risks of losses. 
-Achieving evolution through sustained chain splits is thus a messy, sub-optimal and a damaging process. It reduces network security and opens up the chain to various attacks due to the dilution of hashpower and a loss of transaction finality. Here are a few good articles that explain sustained chain splits to understand scenarios and game theory  of a hashpower split:
-The differences between a hard fork, a soft fork, and a chain split, and what they mean for the future of bitcoin
-The dangers of sustained chain splits 
-UASF BIP148 Scenarios and Game Theory
-Examining Decred's Hybrid PoW/PoS based governance 
-Decred iterates pure PoW based network consensus with staking nodes, providing a pathway for users to weigh in on intra-protocol decisions. This aligns user incentives and augments the protocols deterrent properties:
-Staking nodes function to keep miners compliant and provide a secure pathway for decision makingIn this model, the PoW miners provide computational power to find blocks, however each block they produce needs to have a minimum ≥3 of 5 tickets from the ticket pool. For protocol changes, there is a 75% Yes threshold requirement based on voting preference that is gauged from a pool of ~40960 tickets, over an interval of 8064 blocks (~4 weeks). This means that hashpower is unable to extend the blockchain without the expressed approval of stakeholders. Users can become stakeholders and formally participate in the protection and evolution of the protocol through time-locking their coins for tickets.
-An internal ticket market rewards users with a portion of the block subsidy (30%) as an incentive to participate. It is in the stakeholders best interest to make informed decisions as they are directly exposed to the downsides of bad decision making. Ticket prices also adjusts every 144 blocks (~12 hours) by an algorithm with the sole purpose of keeping the pool size to around ~40960 tickets. The coins are also locked in a deterministic pseudo-random fashion with an average vote time of ~28 days, making it hard to game with a reasonable payout time.
-The tickets also have other abilities such as punishing bad mining behaviors, this can be done by enforcing soft policy-based compliance checks e.g fining  the propagation of empty blocks, or the act of censoring particular transactions. The remaining 10% goes to a fund (address) that pays for ongoing advancement of the project via a blockchain-anchored proposal system, called Politeia.
-Benefits of the Hybrid approach:
-The hybrid protocol incentivizes users to keep miners in compliance, any unapproved act or bad behavior by miners can face serious economic penalties. In a scenario where hashpower is split 50% between two forks, and a successful stake vote (75% stake in agreement), miners cannot purposely or accidentally cause sustained chain splits as they are unable to build on-top off unapproved blocks. Here is an image to help visualize this:
-Miners cannot build on blocks that lack stakeholder ticketsCritique on Decred:
-It is important to note that the issues that affect pure PoW can theoretically occur in Decred, however the protocol is designed to be highly resistant to them, a good explanation of demonstrating fork resistance can be found in the below link:
-A simple yet detailed example of decred fork resistance is demonstrated by Dave Collins (lead C0 Decred dev) here. 
-In addition to fork resistance, there is still a possibility for a 51% attack, however it is substantially more expensive to pull off compared to pure PoW. Here is an article on how expensive it is to do a majority attack in Decred:
-Decred's hybrid protocol, a superior deterrent to majority attacks
-Lastly, only one implementation of Decred is currently live, the good thing is that unlike bitcoin core, where alternative implementations are discouraged, Decred encourages alternative implementation as they will imbue anti-fragility to the network and further decentralize development. The danger of alternate implementations falling out of consensus is less of a threat in Decred simply because rule changes are voted in, any implementations which does not follow newly voted rules wont be able to extend the chain. 
-Ongoing development
-Externally funded development is a source of contention when it comes to decision making of the protocol. The Agency problem is a crux that Decred aims to solve through the creation of a stakeholder direct DAO (decentralized autonomous organization), however, the entity has been omitted from the power structure as it is yet to be realized. Currently, users will still be able to participate in co-developing and in providing feedback through Politeia. More about Politeia can be read here.
-The creation of a DAO combined with Politeia should augment the power structure in way that benefits not only Decred, but possibly serve to be a growth engine for the crypto-ecosystem through funding research and development with an opensource ethos.
+This model was inspired by Nic Carter’s tripartite model and Jimmy Song’s article on UASF BIP148
+When disputes arise over changes to the protocol, things can get complicated very quickly. There are a good deal of examples that such disruptive events occur, for example the recent Bitcoin Cash war and the historical Bitcoin forks. The pure PoW model is arguably deficient as a mechanism for achieving social consensus among stakeholders.
+
+In pure PoW governance there is no tamper-proof pathway for stakeholders to resolve disputes. The resolution pathway is either providing feedback to the developers via forums/websites/polls or through arbitration by the market itself. One of the biggest issues with the reliance on market forces is that it allows for the possibility of consensus failure.
+
+Let’s examine this in more detail (summarized in the diagram below):
+
+Disputes occur over intra-protocol change X. Social consensus is gauged (via polls, meetings, social media). A competing software implementation emerges, backed by developers with alternative sources of funding.
+Developers provide updates, stating their intent to resolve problem X. Some users show support to the new developers and upgrade to the competing software implementation (containing the new rule-set).
+Signaling can occur to help convince miners, however this is not a requirement (see UASF/UAHF).
+A few mining pools can decide to support the opposing implementation; in this case a hash power split occurs.
+If this is a contentious change, miners can start a hash power war causing chain splits, reorganizations, or even sustained chain splits.
+Since there is no way to formalize intra-protocol decisions, the only option is resolution through arbitration by the open market.
+Economic nodes have to update their software and adapt to the new status quo. In the case of a sustained chain split, they have to decide whether they add support for the new fork(s) of the cryptocurrency.
+
+Model of a pure PoW network in dispute
+By looking at the above model, it can be observed that:
+
+Users do not have a tamper-free pathway to participate in intra-protocol decision making. Conflicts are resolved via (market) arbitration.
+Mining nodes can cause consensus failure by supporting alternative rule-sets, since they are not bound by any agreements.
+Consensus failure in PoW networks
+Since PoW networks have no formal mechanisms to resolve intra-protocol disputes, consensus failure is likely to occur. As defined in the introduction, consensus failure will result in a chain split, often causing the blockchain to reorganize. This could mean a loss of transaction finality, one of the most important features of cryptocurrencies.
+
+
+Depiction of a pure PoW blockchain reorganizing, all transactions mined in Fork B blocks will reverse
+Usually, the higher the number of confirmations, the more confidence one can have in the permanence of a transaction. During consensus failure, however, no amount of confirmations are safe. The branch on which your transaction takes place has to win and cause a reorganization. During consensus failure it is dangerous for transactions to occur as there are increased risks of losses.
+
+The reality of this danger is demonstrated by Jimmy Song in his article on UASF BIP148 Scenarios and Game Theory:
+
+You should be very careful about transacting after August 1. There are scenarios where your transaction will get wiped out no matter which fork you choose. Both chains have some wipeout risk and I imagine most people will be hesitant to do anything until there’s some resolution.
+Apart from the loss of transaction finality, consensus failure could also result in sustained chain splits. In this scenario the network forks into two different cryptocurrencies that share the transaction history up to a certain point. In his article on the dangers of sustained chain splits, Noah Pierau explains the risks of sustained chain splits in more detail.
+
+It should be abundantly clear that resolving disputes in pure PoW networks is a messy, sub-optimal and often damaging process.
+
+Examining Decred’s Hybrid PoW/PoS governance
+Decred iterates upon pure PoW networks in several ways. Most importantly, it introduces staking nodes, providing a pathway for users to weigh in on intra-protocol decisions. Apart from improving blockchain governance, the hybrid model augments the security of network.
+
+
+Staking nodes function to keep miners compliant and provide a secure pathway for decision making
+Just like in a pure PoW network, the PoW miners provide computational power to find blocks. However, each block they produce needs to be checked by the PoS nodes. This means that PoW miners are prevented from extending the blockchain without explicit approval of stakeholders. Users can become stakeholders and formally participate in the protection and evolution of the protocol through time-locking their DCR coins in exchange for tickets.
+
+An internal ticket market rewards users with a portion of the block reward as an incentive to participate. For intra-protocol changes, PoS nodes are able to vote on their preferred version of the blockchain. Changes with >75% of the votes will automatically activate. It is in the best interest of stakeholders to make informed decisions, as they are directly exposed to the downsides of bad decision making (their coins are locked). More details on this unique voting system can be found in the Decred documentation.
+
+Benefits of the Hybrid approach
+Decred’s hybrid protocol incentivizes users to become stakeholders and keeps miners compliant. In a scenario where hashing power is split, miners cannot purposely or accidentally cause chain splits since they are unable to build on top of unapproved blocks (visualized in the image below).
+
+
+Depiction of how miners cannot extend a minority fork as it lacks support from stakeholders
+It is important to note that the issues affecting pure PoW blockchains can theoretically occur in Decred. However, its hybrid protocol is designed to be highly resistant to them. A good explanation of Decred’s fork resistance can be found in this Reddit post by Dave Collins.
+
+In addition to fork resistance, it is substantially more expensive to attack Decred compared to a pure PoW network such as Bitcoin. Here is an article on how expensive it is to conduct a majority attack: Decred’s hybrid protocol, a superior deterrent to majority attacks.
+
 Conclusion
-Cryptocurrencies operate on networks run by sovereign entities, these entities are able to agree on the current consensus rules however their opinions may differ if there are intra-protocol changes required. Gauging social consensus in bitcoin occurs off-chain, is not tamper-proof, and entails severe coordination issues. Sustained chain splits is one route for achieving protocol evolution, however it may prove to be a sub optimal path to resolve contentious disputes due to the risk of reorganizations and the splintering of communities. Decred addresses the problems that plagues PoW by allowing users to have a seat at the table through stake voting in order to keep miners compliant and unified during protocol changes. Evolution should thus occur in a manner that does not cause the splintering of the community of users nor the looming threats of large reorganizations due to sustained chain splits.
-Credits (slack/matrix names): Haon, Bee, davecgh, s_ben, and others who have provided feedback and answered questions.
+Cryptocurrencies operate on networks run by sovereign entities. These actors are able to agree on the current consensus rules, although their opinions may clash if there are intra-protocol changes required. Gauging social consensus in Bitcoin is not tamper-proof and entails severe coordination issues. In order to resolve disputes around intra-protocol changes, most PoW networks face the risks of reorganizations and sustained chain splits.
+
+Decred iterates upon Bitcoin by solving the coordination problems that plague pure PoW blockchains. By allowing users to obtain a seat at the table through PoS voting, anyone with skin-in-the-game can participate in intra-protocol decision making. The hybrid approach also keeps miners compliant since blocks are checked before they are added to the chain. With this unique blockchain governance model, Decred is ready for the future.
+
+Credits (slack/matrix names): haon, bee, davecgh, s_ben, and others who have provided feedback and answered questions.
