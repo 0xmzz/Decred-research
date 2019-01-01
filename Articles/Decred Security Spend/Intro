@@ -1,0 +1,18 @@
+I was going to conduct analysis for the Security spend on Decred (security spend = cost to do a majority attack), however conducting analysis from 
+static sources will only be true for any moment in time. I am working on python code to pull data from these two sources and output a .csv that can 
+plotted on a graph:
+
+	1) Get data from following sources
+		a. Decred block data (daniyal) : https://explorer.dcrdata.org/api/block
+			i. API docs: https://github.com/decred/dcrdata#json-rest-api
+		
+		b. Price date (zubair):https://pro-api.coinmarketcap.com/v1/ 
+			i. https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyQuotesHistorical
+	
+	
+Output .CSV file with the following columns
+
+Date |	Hashrate |	Price |	Stakepool Value |	Cost to do a majority attack|
+
+
+The goal is to make a webpage that will show the security spend which is dynamically updated.
