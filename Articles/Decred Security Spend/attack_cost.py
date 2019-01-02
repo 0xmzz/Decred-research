@@ -3,7 +3,6 @@ import requests
 import json
 import datetime
 import pandas as pd
-import numpy as np
 from bs4 import BeautifulSoup
 
 def is_json(myjson):
@@ -15,7 +14,9 @@ def is_json(myjson):
 
 
 def blockRequest(i = 1):
-    blockExplorer_url = 'https://explorer.dcrdata.org/api/block/range/'+str(i)+'/306052'
+    latestBlock_url = 'https://explorer.dcrdata.org/api/block/best/height'
+    latestBlock = requests.get(latestBlock_url)
+    blockExplorer_url = 'https://explorer.dcrdata.org/api/block/range/'+str(i)+'/'+latestBlock.text
     blockExplorer_response = requests.get(blockExplorer_url)
     #Error catch
     if blockExplorer_response.status_code != 200:
@@ -27,9 +28,11 @@ def blockRequest(i = 1):
             return jsonLoad
         else:
             unknownBlock = jsonLoad[jsonLoad.find("I don\'t know block"):]
-            i = int(''.join(list(filter(str.isdigit, unknownBlock))))+1
+            lastblock = int(''.join(list(filter(str.isdigit, unknownBlock))))
             jsonLoad = jsonLoad[:jsonLoad.find(unknownBlock)]
-            return jsonLoad + (blockRequest(i))[1:]
+            last_jsonEntry = jsonLoad[jsonLoad.find(',{"height":'+str(lastblock-1)):]
+            last_jsonEntry = last_jsonEntry.replace(',{"height":'+str(lastblock-1),'{"height":'+str(lastblock))
+            return jsonLoad + last_jsonEntry + (blockRequest(lastblock+1))[1:]
 
 
 #turning json string to dictionary and dataframe
