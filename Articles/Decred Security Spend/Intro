@@ -1,18 +1,39 @@
-I was going to conduct analysis for the Security spend on Decred (security spend = cost to do a majority attack), however conducting analysis from 
-static sources will only be true for any moment in time. I am working on python code to pull data from these two sources and output a .csv that can 
-plotted on a graph:
+Motivation:
+Hybrid protocol that Decred Employs has greater deterrent properties to misuse than Pure PoW. 
+This is because the attacker needs to gain a large portion of the stake in addition to hashpower 
+to be able to make blocks faster than the rest of the network. The analysis aims to showcase this
+greater security in a chart from the inception of the network till current date.
 
-	1) Get data from following sources
-		a. Decred block data (daniyal) : https://explorer.dcrdata.org/api/block
+Goal:
+Create a Webpage that shows the Security spend of decered on a chart. Then Build more functionality ontop, such as detecting double spends,
+empty blocks and more complex attack costs.
+
+Requirements:
+
+Code (python or R) to create a .csv output and join them from the following sources:
+
+1) Decred block data (daniyal) : https://explorer.dcrdata.org/api/block/1/(current block)
 			i. API docs: https://github.com/decred/dcrdata#json-rest-api
+			
+		Data of important:
+		a) Block Height
+		b) Date
+		c) Difficulty (to calculate Hashpower)
+		d) Sdiff (staking difficulty)
+		e) Stake Pool Value
 		
-		b. Price date (zubair):https://pro-api.coinmarketcap.com/v1/ 
+		
+		
+2) Price date (zubair):https://pro-api.coinmarketcap.com/v1/ 
 			i. https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyQuotesHistorical
-	
+			Note* may webscrape this data
+			
+		a) Date
+		b) Close
+			
+			
 	
 Output .CSV file with the following columns
 
-Date |	Hashrate |	Price |	Stakepool Value |	Cost to do a majority attack|
+Block Height |	Date |	Difficulty |	Sdiff |	Stakepool Value | Closing Price | Cost to do a majority attack (Cost to get 50% Hashrate+ 50% of stakepool Value)|
 
-
-The goal is to make a webpage that will show the security spend which is dynamically updated.
