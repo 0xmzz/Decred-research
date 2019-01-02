@@ -36,5 +36,5 @@ Code (python or R) to create a .csv output and a full outter join of the two sou
 	
 Output .CSV file with the following columns
 
-Block Height |	Date |	Difficulty |	Sdiff |	Stakepool Value | Closing Price | Cost to do a majority attack (Cost to get 50% Hashrate+ 50% of stakepool Value)|
+Block Height |	Date |	Difficulty |	Sdiff |	Stakepool Value | Closing Price | Cost per TH/s (latest Asic miner)| Cost to do a majority attack (Cost to get 50% Hashrate + 50% of stakepool Value)|
 
