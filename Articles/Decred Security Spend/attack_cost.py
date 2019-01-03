@@ -71,6 +71,20 @@ Historical_df.sort_index(inplace=True)
 dataframe= pd.merge(dataframe, Historical_df, on=['Date'], how='outer').fillna(method = 'bfill')
 dataframe = dataframe.fillna(method = 'ffill')
 
+#additional columns calculating attack cost
+#dataframe['Cost to attack'] = dataframe.apply(lambda row: row.value * row.close), axis=1)
+
+#cost to aquire 50% of stakepool 
+def costS(df):
+    return (df[4] *.5) * df[5]
+
+dataframe['Cost of 50% stake'] = dataframe.apply(costS, axis=1)
+#cost to aquire 50% hashpower, based on per TH/s of latest ASIC retail pricing
+def costH(df):
+    return df[1] * 4294967296/300000000000000 * 1900 
+  
+
+dataframe['Cost of 50% hashpower'] = dataframe.apply(costH, axis=1)
 #write to csv
 dataframe.to_csv('Attack_cost.csv', encoding='utf-8', index=False)
 
