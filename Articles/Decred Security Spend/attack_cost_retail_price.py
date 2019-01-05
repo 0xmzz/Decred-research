@@ -84,25 +84,25 @@ dataframe['Cost of 50% stake'] = dataframe.apply(costS, axis=1)
 def costh(df): 
     if (pd.to_datetime(df[0]).year == 2018):
         if (pd.to_datetime(df[0]).month < 12 and pd.to_datetime(df[0]).month >= 10):
-            #df[1] is the difficulty column, then *4294967296/300000000000000 to get hashrate and $83.3 cost per TH based on Whatsminer D1 
+            #df[1] is the difficulty column, then *4294967296/300000000000000 to get hashrate and $83.33 cost per TH based on Whatsminer D1 4000$ initially
             return df[1] * 4294967296/300000000000000 * 83.33 
         elif (pd.to_datetime(df[0]).month < 10 and pd.to_datetime(df[0]).month >= 4):
             return df[1] * 4294967296/300000000000000 * 1666.67 #ASIC miner Decred Master
         elif (pd.to_datetime(df[0]).month < 4):
             return df[1] * 4294967296/300000000000000 * 78947.37#GPU mining cost based on radeon r290x priced at 150$ and 1.9 gh/s
         else:
-            return df[1] * 4294967296/300000000000000 * 58.82
+            return df[1] * 4294967296/300000000000000 * 58.82#Antminer DR5
     elif (pd.to_datetime(df[0]).year < 2018):
-        return df[1] * 4294967296/300000000000000 * 78947.37
+        return df[1] * 4294967296/300000000000000 * 78947.37 #gpu mining
     else:
-        return df[1] * 4294967296/300000000000000 * 58.82
+        return df[1] * 4294967296/300000000000000 * 58.82 #Antminer DR5
     
 dataframe['Cost of 50% hashpower'] = dataframe.apply(costh, axis=1)
 
 def Totalc(df):
-          return (df[] + df[]
+    return df[7] + df[8]
 
-dataframe['Cost of 50% stake'] = dataframe.apply(costS, axis=1)
+dataframe['total cost of attack/security spend'] = dataframe.apply(Totalc, axis=1)
 #cost(dataframe['Date'],dataframe['diff'])
 
 #dataframe['capital cost'] = cost(dataframe['Date'],dataframe['diff'])
@@ -111,7 +111,7 @@ dataframe['Cost of 50% stake'] = dataframe.apply(costS, axis=1)
         
 
 #write to csv
-dataframe.to_csv('Attack_cost.csv', encoding='utf-8', index=False)
+dataframe.to_csv('Attack_costretail.csv', encoding='utf-8', index=False)
 
 
 '''
