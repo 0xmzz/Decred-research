@@ -10,7 +10,7 @@ empty blocks and more complex attack costs.
 
 Requirements:
 
-Code (python or R) to create a .csv output and a full outter join of the two sources below:
+Code (python or R) to create a .csv output 
 
 1) Decred block data : https://explorer.dcrdata.org/api/block/1/(current block)
 			i. API docs: https://github.com/decred/dcrdata#json-rest-api
@@ -30,11 +30,11 @@ Code (python or R) to create a .csv output and a full outter join of the two sou
 		
 		Data of importance
 		a) Date
-		b) Close
+		b) Closing price
 			
 			
 	
-Output .CSV file with the following columns
+The .CSV file from the python script outputs the following columns:
 
-Block Height |	Date |	Difficulty |	Sdiff |	Stakepool Value | Closing Price | Cost per TH/s (latest Asic miner)| Cost to do a majority attack (Cost to get 50% Hashrate + 50% of stakepool Value)|
+Date	diff	height	sdiff	value	Close	Market Cap	Cost of 50% stake	Cost of 50% hashpower	total cost of attack/security spend
 
