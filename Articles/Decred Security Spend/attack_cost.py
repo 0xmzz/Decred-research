@@ -74,45 +74,65 @@ dataframe = dataframe.fillna(method = 'ffill')
 #additional columns calculating attack cost
 #dataframe['Cost to attack'] = dataframe.apply(lambda row: row.value * row.close), axis=1)
 
-#cost to aquire 50% of stakepool 
+#cost to aquire 50% of stakepool, multiplies 50% of stakepool with closing price of the day  
 def costS(df):
-    return (df[4] *.5) * df[5]
+          return (df[4] *.5) * df[5]
 
 dataframe['Cost of 50% stake'] = dataframe.apply(costS, axis=1)
-#cost to aquire 50% hashpower, based on per TH/s of latest ASIC retail pricing
-def costH(df):
-    return df[1] * 4294967296/300000000000000 * 1900 
-  
 
-dataframe['Cost of 50% hashpower'] = dataframe.apply(costH, axis=1)
+#Cost to aquire 50% of hashpower by buying equipment from the market
+def costh(df): 
+    if (pd.to_datetime(df[0]).year == 2018):
+        if (pd.to_datetime(df[0]).month < 12 and pd.to_datetime(df[0]).month >= 10):
+            #df[1] is the difficulty column, then *4294967296/300000000000000 to get hashrate and $83.3 cost per TH based on Whatsminer D1 
+            return df[1] * 4294967296/300000000000000 * 83.33 
+        elif (pd.to_datetime(df[0]).month < 10 and pd.to_datetime(df[0]).month >= 4):
+            return df[1] * 4294967296/300000000000000 * 1666.67 #ASIC miner Decred Master
+        elif (pd.to_datetime(df[0]).month < 4):
+            return df[1] * 4294967296/300000000000000 * 78947.37#GPU mining cost based on radeon r290x priced at 150$ and 1.9 gh/s
+        else:
+            return df[1] * 4294967296/300000000000000 * 58.82
+    elif (pd.to_datetime(df[0]).year < 2018):
+        return df[1] * 4294967296/300000000000000 * 78947.37
+    else:
+        return df[1] * 4294967296/300000000000000 * 58.82
+    
+dataframe['Cost of 50% hashpower'] = dataframe.apply(costh, axis=1)
+
+def Totalc(df):
+          return (df[] + df[]
+
+dataframe['Cost of 50% stake'] = dataframe.apply(costS, axis=1)
+#cost(dataframe['Date'],dataframe['diff'])
+
+#dataframe['capital cost'] = cost(dataframe['Date'],dataframe['diff'])
+
+#dataframe['Capital cost'] = dataframe.apply(cost, axis=1)
+        
+
 #write to csv
 dataframe.to_csv('Attack_cost.csv', encoding='utf-8', index=False)
 
 
 '''
 #Since problems in block explorer breaking on certain blocks. the data was saved to three csvs
-
 #URL for get requests
 #problems with block explorere not having values for certain blocks
     #blockExplorer_url = 'https://explorer.dcrdata.org/api/block/range/1/280050'
     #blockExplorer_url = 'https://explorer.dcrdata.org/api/block/range/280052/295545'
     #blockExplorer_url = 'https://explorer.dcrdata.org/api/block/range/295547/306052'
-
 #getting all the data
 dataset1 = pd.read_csv('Attack_cost_1.csv')
 dataset2 = pd.read_csv('Attack_cost_2.csv')
 dataset3 = pd.read_csv('Attack_cost_3.csv')
-
 #removing unwanted variables
 dataset1 = dataset1[dataset1.height != -1]
 dataset2 = dataset2[dataset2.height != -1]
 dataset3 = dataset3[dataset3.height != -1]
-
 #combining data into one
 Combined_Data = pd.DataFrame()
 Combined_Data = Combined_Data.append(dataset1, sort=False)
 Combined_Data = Combined_Data.append(dataset2, sort=False)
 Combined_Data = Combined_Data.append(dataset3, sort=False)
-
 #writing all to csv
 Combined_Data.to_csv('Attack_cost.csv', encoding='utf-8', index=False)'''
