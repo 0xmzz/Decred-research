@@ -80,7 +80,6 @@ def costS(df):
 
 dataframe['Cost of 50% stake'] = dataframe.apply(costS, axis=1)
 
-#Cost to aquire 50% of hashpower by buying equipment from the market
 def costh(df): 
     if (pd.to_datetime(df[0]).year == 2018):
         if (pd.to_datetime(df[0]).month < 12 and pd.to_datetime(df[0]).month >= 10):
@@ -98,26 +97,66 @@ def costh(df):
         return df[1] * 4294967296/300000000000000 *.5 * 58.82 #Antminer DR5
     
 dataframe['Cost of 50% hashpower (retail)'] = dataframe.apply(costh, axis=1)
+'''
+def electriccosth(df): 
+    if (pd.to_datetime(df[0]).year == 2018):
+        if (pd.to_datetime(df[0]).month < 12 and pd.to_datetime(df[0]).month >= 10):
+            #df[1] is the difficulty column, then *4294967296/300000000000000 to get hashrate and post per KW per day per TH based on Whatsminer D1 4000$ initially
+            return df[1] * 4294967296/300000000000000 *.5 * 0.06 
+        elif (pd.to_datetime(df[0]).month < 10 and pd.to_datetime(df[0]).month >= 4):
+            return df[1] * 4294967296/300000000000000 *.5 * .5 #ASIC miner Decred Master
+        elif (pd.to_datetime(df[0]).month < 4):
+            return df[1] * 4294967296/300000000000000 *.5 * 186#GPU mining cost based on radeon r290x priced at 150$ and 1.9 gh/s
+        else:
+            return df[1] * 4294967296/300000000000000 *.5 * 0.06#Antminer DR5
+    elif (pd.to_datetime(df[0]).year < 2018):
+        return df[1] * 4294967296/300000000000000 *.5 * 186 #gpu mining
+    else:
+        return df[1] * 4294967296/300000000000000 *.5 * 0.03 #Antminer DR5
+    
+dataframe['Daily electric cost of 50% hashpower (honest)'] = dataframe.apply(costh, axis=1)
+'''
 
+#Cost to aquire 50% of hashpower by buying equipment from the market
+def costh(df): 
+    if (pd.to_datetime(df[0]).year == 2018):
+        if (pd.to_datetime(df[0]).month < 12 and pd.to_datetime(df[0]).month >= 10):
+            #df[1] is the difficulty column, then *4294967296/300000000000000 to get hashrate and $83.33 cost per TH based on Whatsminer D1 4000$ initially
+            return df[1] * 4294967296/300000000000000 *.5 * 83.33 
+        elif (pd.to_datetime(df[0]).month < 10 and pd.to_datetime(df[0]).month >= 4):
+            return df[1] * 4294967296/300000000000000 *.5 * 1666.67 #ASIC miner Decred Master
+        elif (pd.to_datetime(df[0]).month < 4):
+            return df[1] * 4294967296/300000000000000 *.5 * 78947.37#GPU mining cost based on radeon r290x priced at 150$ and 1.9 gh/s
+        else:
+            return df[1] * 4294967296/300000000000000 *.5 * 58.82#Antminer DR5
+    elif (pd.to_datetime(df[0]).year < 2018):
+        return df[1] * 4294967296/300000000000000 *.5 * 78947.37 #gpu mining
+    else:
+        return df[1] * 4294967296/300000000000000 *.5 * 58.82 #Antminer DR5
+    
+        
+dataframe['Cost of 50% hashpower (manufacturer)'] = dataframe.apply(costhhidden, axis=1)
+'''
 def costhhidden(df): #if ASIC manufacturer had a 6 month advantage 
     if (pd.to_datetime(df[0]).year == 2018):
         if (pd.to_datetime(df[0]).month < 6 and pd.to_datetime(df[0]).month >= 4):
-            #df[1] is the difficulty column, then *4294967296/300000000000000 to get hashrate and $83.33 cost per TH based on Whatsminer D1 4000$ initially
-            return df[1] * 4294967296/300000000000000 *.5 * 83.33 
+            #df[1] is the difficulty column, then *4294967296/300000000000000 to get hashrate and cost per KW per day per TH based on Whatsminer D1 4000$ initially
+            return df[1] * 4294967296/300000000000000 *.5 * 0.06 
         elif (pd.to_datetime(df[0]).month < 4):
-            return df[1] * 4294967296/300000000000000 *.5 * 1666.67 #ASIC miner Decred Master
+            return df[1] * 4294967296/300000000000000 *.5 * .5 #ASIC miner Decred Master
         else:
-            return df[1] * 4294967296/300000000000000 *.5 * 58.82#Antminer DR5
+            return df[1] * 4294967296/300000000000000 *.5 * 0.03#Antminer DR5
     elif (pd.to_datetime(df[0]).year == 2017 and pd.to_datetime(df[0]).month >= 10):
-        return df[1] * 4294967296/300000000000000 *.5 * 1666.67 #gpu mining
+        return df[1] * 4294967296/300000000000000 *.5 * .5 
     elif (pd.to_datetime(df[0]).year == 2017 and pd.to_datetime(df[0]).month < 10):
-        return df[1] * 4294967296/300000000000000 *.5 * 78947.37 #gpu mining
+        return df[1] * 4294967296/300000000000000 *.5 * 186 #gpu mining
     elif (pd.to_datetime(df[0]).year < 2017):
-        return df[1] * 4294967296/300000000000000 *.5 * 78947.37
+        return df[1] * 4294967296/300000000000000 *.5 * 186
     else:
-        return df[1] * 4294967296/300000000000000 *.5 * 58.82 #Antminer DR5
-        
-dataframe['Cost of 50% hashpower (6 month advantage)'] = dataframe.apply(costhhidden, axis=1)
+        return df[1] * 4294967296/300000000000000 *.5 * 0.06 #Antminer DR5
+    
+dataframe['Daily electric cost of 50% hashpower (dishonest)'] = dataframe.apply(costh, axis=1)
+'''
 
 def Totalcretail(df):
     return df[7] + df[8]
@@ -127,14 +166,15 @@ dataframe['total cost of attack/security spend'] = dataframe.apply(Totalcretail,
 def Totalchidden(df):
     return df[7] + df[9]
     
-dataframe['total cost if secret ASIC developed'] = dataframe.apply(Totalchidden, axis=1)
+dataframe['total cost manufacturer attack'] = dataframe.apply(Totalchidden, axis=1)
 
 def Hashrate(df):
     return df[1] * 4294967296/300000000000000
 dataframe['Hashrate'] = dataframe.apply(Hashrate, axis=1)
 
+
 #write to csv
-dataframe.to_csv('Attack_cost11.csv', encoding='utf-8', index=False)
+dataframe.to_csv('Attack_costretail_vs_manufacturer.csv', encoding='utf-8', index=False)
 
 
 '''
