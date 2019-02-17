@@ -4,11 +4,7 @@ This is because the attacker needs to gain a large portion of the stake in addit
 to be able to make blocks faster than the rest of the network. The analysis aims to showcase this
 greater security in a chart from the inception of the network till current date.
 
-Goal:
-Create a Webpage that shows the Security spend of decered on a chart. Then Build more functionality ontop, such as detecting double spends,
-empty blocks and more complex attack costs.
-
-Requirements:
+Instructions:
 
 python installed to create a .csv output 
 
