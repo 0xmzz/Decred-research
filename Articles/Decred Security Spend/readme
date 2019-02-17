@@ -10,31 +10,9 @@ empty blocks and more complex attack costs.
 
 Requirements:
 
-Code (python or R) to create a .csv output 
+python installed to create a .csv output 
 
-1) Decred block data : https://explorer.dcrdata.org/api/block/1/(current block)
-			i. API docs: https://github.com/decred/dcrdata#json-rest-api
-			
-		Data of importance:
-		a) Block Height
-		b) Date
-		c) Difficulty (to calculate Hashpower)
-		d) Sdiff (staking difficulty)
-		e) Stake Pool Value
-		
-		
-		
-2) Price data : https://pro-api.coinmarketcap.com/v1/ 
-			i. https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyQuotesHistorical
-			Note* may webscrape this data
-		
-		Data of importance
-		a) Date
-		b) Closing price
-			
-			
-	
-The .CSV file from the python script outputs the following columns:
+The .CSV file from the script outputs the following columns:
 
 Date	diff	height	sdiff	value	Close	Market Cap	Cost of 50% stake	Cost of 50% hashpower	total cost of attack/security spend
 
