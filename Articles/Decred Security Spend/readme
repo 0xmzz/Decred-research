@@ -8,7 +8,8 @@ Instructions:
 
 python installed to create a .csv output 
 
-The .CSV file from the script outputs the following columns:
+1) The attack_cost.py will output a CSV file with following columns:
+Date|	diff|	height|	sdiff|	value	Close|	Market Cap|	Cost of 50% stake|	Cost of 50% hashpower|	total cost of attack|
 
-Date	diff	height	sdiff	value	Close	Market Cap	Cost of 50% stake	Cost of 50% hashpower	total cost of attack/security spend
+2) The block data.csv will output a CSV with from block 1 to the latest from https://explorer.dcrdata.org/
 
