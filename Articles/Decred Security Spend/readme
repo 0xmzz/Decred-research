@@ -1,8 +1,4 @@
-Motivation:
-Hybrid protocol that Decred Employs has greater deterrent properties to misuse than Pure PoW. 
-This is because the attacker needs to gain a large portion of the stake in addition to hashpower 
-to be able to make blocks faster than the rest of the network. The analysis aims to showcase this
-greater security in a chart from the inception of the network till current date.
+Scripts for easier attack cost and security spend analysis.
 
 Instructions:
 
