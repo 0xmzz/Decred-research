@@ -4,8 +4,8 @@ Instructions:
 
 python installed to create a .csv output 
 
-1) The attack_cost.py will output a CSV file with following columns:
+-The attack_cost.py will output a CSV file with following columns. (based on retail asic prices)
 Date|	diff|	height|	sdiff|	value	Close|	Market Cap|	Cost of 50% stake|	Cost of 50% hashpower|	total cost of attack|
 
-2) The block data.csv will output a CSV with from block 1 to the latest from https://explorer.dcrdata.org/
+-The block data.csv will output a CSV with from block 1 to the latest from https://explorer.dcrdata.org/
 
