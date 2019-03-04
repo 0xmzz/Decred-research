@@ -1,14 +1,58 @@
-Intorduction:
+A look at Decred Security budget
 
 
-Decred protocol and attack requirements explained
+Decred is an example of an open permissionless system which pays anyone to earn a reward if they are able to run a full node to compute a task and or validate blocks and help with decision making. Decred just like Bitcoin has what you would call a "security budget" which is the money the network pays to the miners for computation and coin holders for participation. The ticket holders, who are essentially coin holders verify PoW blocks, this provides an additional layer of security over pure PoW. However, Decred has a fixed limit on the number of coins that will be minted, thus the block reward will decay over time and eventually hit the hard-capped zero in 2120 (~101 years from now). This article will explore the security budget as it currently stands and an outlook on how it will look in the near future. 
+Breaking down the security budget
+The last block reward will be created in September 2120. The upper limit on the total supply of Decred is 20,999,999.99800912 coins (2).This security budget comprises of two groups that work together to provide the network with security.
+Miners = 60% of block reward + transaction fees.
+Ticket holders = 30% of blockreward + voting rights
+Knowing that there is a finite limit of less than 21 million, we can predict that the system will transition from a security budget that is largely funded by a scheduled block reward to being purely funded by dynamic market-based transaction fees. 
+Final security budget (as of now)
+Miners = transaction fees.
+Ticket holders = voting rights
+Security spending on Hashrate
+A hybrid protocol such as Decred has a more of an upfront cost attached to attacking its chain. In order to create "approved" blocks faster than the rest of the network, you need a mix of both hashing power finding blocks and live tickets that are called to vote on those blocks. However, the fact remains that mining needs to be incentivized.
+Current budget 
 
-Proof of Work hashpower aquisition scenerios 
 
-Electricity spend daily
+Looking at the near future, with 5nm chips on the horizon the benefits attained from smaller chip sizes are approaching a limit. 
+Infacts compared to 7nm chips, 5nm will only provide up to 15% speed improvements and 30% power reduction. So we are gettin closer to the efficiency limit of mining.
+https://www.tsmc.com/download/ir/annualReports/2017/english/pdf/e_all.pdfCurrently, each block at present (~March 2019) pays 18.59 dcr (~ $315) per block out of which 11.16 dcr (~$190) goes to the PoW. So let's say to maintain the miners to do honest work per block, the network needs to spend at least $190 per block to keep chugging along. Prodicting the tx fees of the future where layer 2 and 3 solutions will facilitate transactions, we can expect the tx fees to increase.
+<insert tx fees increasing to $190 overtime>
 
-Proof of stake tickets aquisitions scenerios
 
-Unified attack cost charts and analysis
 
-Comparing above analysis against bitcoin and few others
+
+Security spending on ticketholders (stakeholders)
+
+
+
+
+
+
+
+
+<insert tx fees  increasing to current security factor>
+PoS provides the majority of security
+Honest ticket holders protect the miners who are honest, however, if the ticket pool is controlled rolled by a dishonest holder (>50%), they can theoretically block miner reward and bring their hashpower requirement lower by blocking honest miners rewards. This is similar to a >50% attack in Pure PoW, however, the cost is greater because locked stake cannot be repurposed or resold, unlike mining hardware. So it is important that the network keeps providing stakeholders adequate incentive to participate and stay honest.
+The off chain component is not a direct incentive via the block subsidy, however, it is a cryptographically provable way to signal stakeholder preference for paying for development and any other project. Therefore it does qualify to be an "incentive" to participate, although it may be unlikely to put a number at this point in time.
+Maintaining a healthy security factor
+Each block at present (~March 2019) pays 18.59 dcr (~ $315) per block out of which 11.16 dcr (~$190) goes to the PoW miner 5.5 (~$95) goes to PoS miners and 1.86 goes to the treasury.
+The block reward started at 31.19582664 and it adjusts every 6,144 blocks (approximately 21.33 days) by reducing by a factor of 100/101 (1).
+
+
+
+
+Researching the TSMC's production cost per wafer, there is a 
+Logic Technology ● 5nm FinFET (Fin field-effect transistor) technology development is progressing smoothly. Risk production of this technology is planned for the first quarter of 2019. Compared to 7nm FinFET technology, 5nm FinFET offers over 15% speed improvement or 30% power reduction. In addition, 5nm FinFET technology is optimized upfront for both mobile applications and high-performance computing devices
+https://www.tsmc.com/download/ir/annualReports/2017/english/pdf/e_all.pdf
+
+
+
+
+Price to attain majority Stakepower:
+We will assume that the attacker has managed to gain enough stake to control the stakepool and has managed to do so without affecting the market price of the dcr coin or the internal ticket price.
+in RL this cost will likely be much much higher because you won't be able to buy that much stake without skyrocketing the exchange value and the internal ticket price that governs the ticket pool. Also that the ticket price constantly adjusts to aim for 41k tickets, if it goes higher the price goes up. Also if you are buying out the ticket pool, you can only buy it out 20 tickets per block making it hard to keep the ticket price around the same as in my calculations
+
+
+The requirements of an attack on Decred require the acquisition of two separate forms of influence
